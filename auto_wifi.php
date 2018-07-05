@@ -1,14 +1,15 @@
 <?php
-$network_config_pairs = array(
-	"Buffalo-A-472E"  => "Home Wi-Fi",
-	"Buffalo-G-472E"  => "Home Wi-Fi",
-	"HG8045-0184-a"   => "Home Wi-Fi",
-	"HG8045-0184-bg"  => "Home Wi-Fi",
-	"Yasu's iPhone 7" => "iPhone",
-	"SWAN"            => "SWAN",
-	"SWing"           => "Swing",
-	"spd-ui-050"      => "spd-ui-50",
-);
+define( "DEFAULT_CONFIG",		"direct" );
+define( "NETWORK_CONFIG_PAIRS", 	array(
+					"Buffalo-A-472E"  => "Home Wi-Fi",
+					"Buffalo-G-472E"  => "Home Wi-Fi",
+					"HG8045-0184-a"   => "Home Wi-Fi",
+					"HG8045-0184-bg"  => "Home Wi-Fi",
+					"SWAN"            => "SWAN",
+					"SWing"           => "Swing",
+					"spd-ui-050"      => "spd-ui-50",
+					"Yasu's iPhone X" => "direct",
+					) );
 
 $previous_network = '';
 while( 1 ){
@@ -35,11 +36,10 @@ function _get_current_network(){
 }
 
 function _get_config_name( $_network ){
-	global $network_config_pairs;
-	if( array_key_exists( $_network, $network_config_pairs ) ){
-		$config = $network_config_pairs[ $_network ];
+	if( array_key_exists( $_network, NETWORK_CONFIG_PAIRS ) ){
+		$config = NETWORK_CONFIG_PAIRS[ $_network ];
 	}else{
-		$config = "iPhone";
+		$config = DEFAULT_CONFIG;
 	}
 	return $config;
 }
