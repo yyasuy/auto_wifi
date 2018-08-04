@@ -19,7 +19,7 @@ while( 1 ){
 		$command = sprintf( 'scselect "%s"', $config_name );
 		`$command`;
 		$notification = sprintf( "osascript -e 'display notification with title \"Switched to: %s\"'", $config_name );
-		`$notification`;
+		//`$notification`;
 		$previous_network = $current_network;
 	}
 	sleep( 5 );
