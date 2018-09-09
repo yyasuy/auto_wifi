@@ -21,6 +21,12 @@ while( 1 ){
 		$notification = sprintf( "osascript -e 'display notification with title \"Switched to: %s\"'", $config_name );
 		//`$notification`;
 		$previous_network = $current_network;
+	}else if( _get_config_name( $current_network ) == 'Home Wi-Fi' ){
+		$output = `ping -c 1 192.168.0.200`;
+		if( strpos( $output, 'icmp_seq' ) == false ){
+			$command = sprintf( 'scselect "%s"', 'direct' );
+			`$command`;
+		}
 	}
 	sleep( 5 );
 }
