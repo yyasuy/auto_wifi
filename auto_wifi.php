@@ -20,6 +20,7 @@ while( 1 ){
 		`$command`;
 		$notification = sprintf( "osascript -e 'display notification with title \"Switched to: %s\"'", $config_name );
 		//`$notification`;
+		printf( "Switched to %s\n", $config_name );
 		$previous_network = $current_network;
 	}else if( _get_config_name( $current_network ) == 'Home Wi-Fi' ){
 /*
