@@ -18,18 +18,10 @@ while( 1 ){
 		$config_name = _get_config_name( $current_network );
 		$command = sprintf( 'scselect "%s"', $config_name );
 		`$command`;
-		$notification = sprintf( "osascript -e 'display notification with title \"Switched to: %s\"'", $config_name );
+		// $notification = sprintf( "osascript -e 'display notification with title \"Switched to: %s\"'", $config_name );
 		//`$notification`;
 		printf( "Switched to %s\n", $config_name );
 		$previous_network = $current_network;
-	}else if( _get_config_name( $current_network ) == 'Home Wi-Fi' ){
-/*
-		$output = `ping -c 1 192.168.0.200`;
-		if( strpos( $output, 'icmp_seq' ) == false ){
-			$command = sprintf( 'scselect "%s"', 'direct' );
-			`$command`;
-		}
-*/
 	}
 	sleep( 5 );
 }
@@ -47,6 +39,12 @@ function _get_current_network(){
 function _get_config_name( $_network ){
 	if( array_key_exists( $_network, NETWORK_CONFIG_PAIRS ) ){
 		$config = NETWORK_CONFIG_PAIRS[ $_network ];
+		if( $config == 'Home Wi-Fi' ){
+			$output = `ping -c 1 192.168.0.200`;
+			if( strpos( $output, 'icmp_seq' ) == false ){
+				$config = DEFAULT_CONFIG;
+			}
+		}
 	}else{
 		$config = DEFAULT_CONFIG;
 	}
