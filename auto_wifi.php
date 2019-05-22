@@ -5,6 +5,8 @@ define( "NETWORK_CONFIG_PAIRS", 	array(
 					"Buffalo-G-472E"  => "Home Wi-Fi",
 					"HG8045-0184-a"   => "Home Wi-Fi",
 					"HG8045-0184-bg"  => "Home Wi-Fi",
+					"Extender-A-6D6A" => "Home Wi-Fi",
+					"Extender-G-6D6A" => "Home Wi-Fi",
 					"SWAN"            => "SWAN",
 					"SWing"           => "Swing",
 					"spd-ui-050"      => "spd-ui-50",
