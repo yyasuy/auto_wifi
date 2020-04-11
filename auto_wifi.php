@@ -6,6 +6,7 @@ define( "HOME_NETWORK",			array(
 					"HG8045-0184-bg",
 					"Extender-A-6D6A",
 					"Extender-G-6D6A",
+					"WIRED-LAN",
 					) );
 define( "DEFAULT_CONFIG",		"direct" );
 define( "NETWORK_CONFIG_PAIRS", 	array(
@@ -40,9 +41,14 @@ while( 1 ){
 
 function _get_current_network(){
 	$output = `networksetup -getairportnetwork en0`;
-	$pattern = '|(.+?)\s(.+?)\s(.+?)\s(.+)|';
+	$pattern = '|(Current Wi-Fi Network:)\s+(.+)|';
 	if( preg_match( $pattern, $output, $matches ) ){
-		$current_network = trim( $matches[ 4 ] );
+		$current_network = trim( $matches[ 2 ] );
+		return $current_network;
+	}
+	$pattern = '|You are not associated with an AirPort network|';
+	if( preg_match( $pattern, $output, $matches ) ){
+		$current_network = "WIRED-LAN";
 		return $current_network;
 	}
 	return '';
