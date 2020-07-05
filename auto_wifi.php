@@ -8,7 +8,8 @@ define( "HOME_NETWORK",			array(
 					"Extender-G-6D6A",
 					"WIRED-LAN",
 					) );
-define( "DEFAULT_CONFIG",		"direct" );
+#define( "DEFAULT_CONFIG",		"direct" );
+define( "DEFAULT_CONFIG",		"Automatic" );
 define( "NETWORK_CONFIG_PAIRS", 	array(
 					"SWAN"            => "SWAN",
 					"SWing"           => "Swing",
@@ -24,6 +25,8 @@ while( 1 ){
 		$command = sprintf( 'scselect "%s"', $config_name );
 		`$command`;
 		printf( "Switched to %s\n", $config_name );
+
+		var_dump( $current_network );
 
 		// Edit the /etc/hosts file
 		if( in_array( $current_network, HOME_NETWORK ) ){
